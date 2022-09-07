@@ -1,9 +1,0 @@
-[gd_scene load_steps=2 format=2]
-
-[ext_resource path="res://Bullet.gd" type="Script" id=1]
-
-[node name="Bullet" type="Line2D"]
-position = Vector2( 338, 230 )
-points = PoolVector2Array( 0, 0, 100, 0 )
-width = 3.0
-script = ExtResource( 1 )

@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-var Bullet = preload("res://Bullet.tscn")
-
 var move_speed = 100
 var pulse_power = 100
 var knockback_speed = 0
@@ -12,9 +10,6 @@ var fall_speed = gravity
 var move_vec = Vector2(0,0)
 
 var gun_collision_point = Vector2(0,0)
-
-func _process(delta):
-	check_gunraycast()
 
 func _physics_process(delta):
 	if is_on_floor():
@@ -46,11 +41,6 @@ func fall():
 	move_and_slide(Vector2(0,fall_speed),Vector2.UP)
 	
 
-func check_gunraycast():
-	gun_collision_point = $Sprite/Gun/ShootPos/RayCast.get_collision_point()
 	
 func shoot():
-	var bullet = Bullet.instance()
-	bullet.to_point.x = gun_collision_point.x
-	bullet.position = Vector2.ZERO
-	$Sprite/Gun/ShootPos.add_child(bullet)
+	pass

@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://PlayerManager.gd" type="Script" id=1]
 [ext_resource path="res://gun.png" type="Texture" id=2]
@@ -9,6 +9,7 @@
 [ext_resource path="res://Red/Death.png" type="Texture" id=7]
 [ext_resource path="res://Red/Jump.png" type="Texture" id=8]
 [ext_resource path="res://Red/Fall.png" type="Texture" id=9]
+[ext_resource path="res://Beam.gd" type="Script" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 24, 36 )
@@ -254,9 +255,13 @@ offset = Vector2( 32, 0 )
 [node name="ShootPos" type="Position2D" parent="Player/Sprite/Gun"]
 position = Vector2( 40, 0 )
 
-[node name="RayCast" type="RayCast2D" parent="Player/Sprite/Gun/ShootPos"]
+[node name="Beam" type="RayCast2D" parent="Player/Sprite/Gun/ShootPos"]
 enabled = true
-cast_to = Vector2( 100, 0 )
+cast_to = Vector2( 1000, 0 )
+script = ExtResource( 10 )
+
+[node name="Line2D" type="Line2D" parent="Player/Sprite/Gun/ShootPos/Beam"]
+points = PoolVector2Array( 0, 0, 0, 0 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( -48, 336 )
