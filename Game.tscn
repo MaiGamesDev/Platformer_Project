@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=2]
+[gd_scene load_steps=64 format=2]
 
 [ext_resource path="res://PlayerManager.gd" type="Script" id=1]
 [ext_resource path="res://gun.png" type="Texture" id=2]
@@ -220,6 +220,46 @@ animations = [ {
 "speed": 8.0
 } ]
 
+[sub_resource type="Gradient" id=55]
+offsets = PoolRealArray( 0, 0.748387, 1 )
+colors = PoolColorArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=56]
+gradient = SubResource( 55 )
+
+[sub_resource type="Curve" id=57]
+_data = [ Vector2( 0, 1 ), 0.0, 0.0, 0, 0, Vector2( 0.589888, 0.996591 ), 0.0, 0.0, 0, 0, Vector2( 1, 0 ), 0.0, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=58]
+curve = SubResource( 57 )
+
+[sub_resource type="ParticlesMaterial" id=59]
+lifetime_randomness = 0.3
+flag_disable_z = true
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 120.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+scale = 0.7
+scale_curve = SubResource( 58 )
+color_ramp = SubResource( 56 )
+
+[sub_resource type="ParticlesMaterial" id=60]
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 250.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+
+[sub_resource type="ParticlesMaterial" id=61]
+emission_shape = 2
+emission_box_extents = Vector3( 1, 1, 1 )
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+tangential_accel = 100.0
+
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 521, 41 )
 
@@ -262,6 +302,18 @@ script = ExtResource( 10 )
 
 [node name="Line2D" type="Line2D" parent="Player/Sprite/Gun/ShootPos/Beam"]
 points = PoolVector2Array( 0, 0, 0, 0 )
+width = 0.0
+default_color = Color( 0.5, 3, 6, 1 )
+
+[node name="CastingParticles" type="Particles2D" parent="Player/Sprite/Gun/ShootPos/Beam"]
+process_material = SubResource( 59 )
+
+[node name="CollisionParticles" type="Particles2D" parent="Player/Sprite/Gun/ShootPos/Beam"]
+process_material = SubResource( 60 )
+
+[node name="BeamParticles" type="Particles2D" parent="Player/Sprite/Gun/ShootPos/Beam"]
+local_coords = false
+process_material = SubResource( 61 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( -48, 336 )
