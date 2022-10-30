@@ -1,46 +1,43 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
-var move_speed = 100
-var pulse_power = 100
-var knockback_speed = 0
-var gravity = 50
-var max_fall_speed = 500
-var fall_speed = gravity
+var Bullet = preload("res://Bullet.tscn")
 
-var move_vec = Vector2(0,0)
+const SPEED = 100
+const JUMP_VELOCITY = -300.0
+
+var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var gun_collision_point = Vector2(0,0)
 
 func _physics_process(delta):
-	if is_on_floor():
-		fall_speed = gravity
-		move()
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y += gravity * delta
+
+	# Handle Jump.
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		velocity.y = JUMP_VELOCITY
+
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction = Input.get_axis("move_left", "move_right")
+	if direction:
+		velocity.x = direction * SPEED
+		$Sprite.scale.x = direction
 	else:
-		fall()
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	move_and_slide()
+	
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed:
 			shoot()
 
-func move():
-	if Input.is_action_pressed("move_left"):
-		move_vec.x = -1
-		$Sprite.scale.x = -2
-	elif Input.is_action_pressed("move_right"):
-		move_vec.x = 1
-		$Sprite.scale.x = 2
-	
-	var velocity = move_vec * move_speed
-	move_and_slide(velocity,Vector2.UP)
-	
-	move_vec = Vector2(0,0)
 
-func fall():
-	fall_speed = clamp(fall_speed * 1.1, 0, max_fall_speed)
-	move_and_slide(Vector2(0,fall_speed),Vector2.UP)
-	
-
-	
 func shoot():
-	pass
+	print("b")
+	var bullet = Bullet.instantiate()
+	bullet.global_position = $Sprite/Gun/ShootPos.global_position
+	get_tree().root.add_child(bullet)
