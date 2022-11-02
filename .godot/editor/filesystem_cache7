@@ -1,42 +1,44 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1667165761
-bullet.png::CompressedTexture2D::6179353537681570970::1665347756::1665347758::1::::<><>::
-Bullet.tscn::PackedScene::4870281499772758103::1665415261::0::1::::<><>::uid://cublbx0jaggdm
-coin.png::CompressedTexture2D::1479042513356744690::1667165761::1667165768::1::::<><>::
-default_env.tres::Environment::-1::1662327501::0::1::::<><>::
-Game.tscn::PackedScene::7916325125445684963::1667163939::0::1::::<><>::res://PlayerManager.gd<>uid://bovh7pe18xj57<>uid://cxmboj0fnrypq<>uid://dlax674nyq3d0<>uid://q32xn4pxq7jl<>uid://b2ebpdkete47n<>uid://dxy41lkd2najo<>uid://qhnei8rxvww2<>uid://c7eh37xptsc3f<>uid://cbng3bn0ns7tr<>uid://cublbx0jaggdm
-gun.png::CompressedTexture2D::3412899387070937032::1657353731::1665068051::1::::<><>::
-icon.png::CompressedTexture2D::7823055294038883501::1662645208::1665068051::1::::<><>::
-man2-pistol2.png::CompressedTexture2D::4533926591508748334::1655912416::1665068051::1::::<><>::
-PlayerManager.gd::GDScript::-1::1667160129::0::1::::<>CharacterBody2D<>::
-::res://Assets/::1662327501
-::res://Assets/Gizmos/::1662327501
-::res://Assets/PlayMaker/::1662327501
-::res://Assets/PlayMaker/Editor/::1662327501
-::res://Assets/PlayMaker/Editor/Resources/::1662327501
-::res://Assets/PlayMaker/Editor/Watermarks/::1662327501
-::res://Red/::1665068051
-Dash Stab.png::CompressedTexture2D::5511980636795993101::1643078748::1665068051::1::::<><>::
-Dash.png::CompressedTexture2D::7932792907712266447::1643078754::1665068051::1::::<><>::
-Death.png::CompressedTexture2D::8824958337661031736::1643078796::1665068051::1::::<><>::
-Fall.png::CompressedTexture2D::7027618612983518501::1643078602::1665068051::1::::<><>::
-Hit.png::CompressedTexture2D::2258875667718065236::1643078780::1665068051::1::::<><>::
-Idle.png::CompressedTexture2D::6412043533792606886::1643078538::1665068051::1::::<><>::
-Jump.png::CompressedTexture2D::1138269078537856599::1643078596::1665068051::1::::<><>::
-Long Range Stab.png::CompressedTexture2D::8085280885233750008::1643078742::1665068051::1::::<><>::
-RecoverReady.png::CompressedTexture2D::1182505235702512205::1643078612::1665068051::1::::<><>::
-Run.png::CompressedTexture2D::4289864650062972945::1643078546::1665068051::1::::<><>::
-::res://Red/@Aseprite/::1657353431
-::res://Red/Bow Attack/::1665068051
-Bow Charge.png::CompressedTexture2D::1091320964465579987::1644235968::1665068051::1::::<><>::
-Bow Shot.png::CompressedTexture2D::3499021745344889005::1644235976::1665068051::1::::<><>::
-Ready.png::CompressedTexture2D::9090223324428531124::1644235958::1665068051::1::::<><>::
-Recover.png::CompressedTexture2D::4964282951280737541::1644235982::1665068051::1::::<><>::
-::res://Red/Bow Attack/Projectile/::1665068051
-Arrow.png::CompressedTexture2D::7569293353769644804::1644234700::1665068051::1::::<><>::
-Enhanced Arrow.png::CompressedTexture2D::305057355978228857::1644236078::1665068051::1::::<><>::
-::res://Red/Melee Attack/::1665068051
-Attack 1.png::CompressedTexture2D::7821083834211687363::1643078696::1665068051::1::::<><>::
-Attack 2.png::CompressedTexture2D::7676124019670583247::1643078702::1665068051::1::::<><>::
-Attack 3.png::CompressedTexture2D::3014415739982255790::1643078710::1665068051::1::::<><>::
-Consecutive Attack.png::CompressedTexture2D::7879648446687765181::1643078686::1665068051::1::::<><>::
+::res://::1667360723
+bullet.png::CompressedTexture2D::6179353537681570970::1667270450::1667270450::1::::<><>::
+Bullet.tscn::PackedScene::4870281499772758103::1667270450::0::1::::<><>::uid://cublbx0jaggdm
+coin.png::CompressedTexture2D::1479042513356744690::1667360783::1667360786::1::::<><>::
+coin_sheet.png::CompressedTexture2D::7222975539696945939::1667270450::1667360723::1::::<><>::
+default_env.tres::Environment::-1::1662603273::0::1::::<><>::
+Game.tscn::PackedScene::7916325125445684963::1667360559::0::1::::<><>::res://PlayerManager.gd<>uid://bovh7pe18xj57<>uid://cxmboj0fnrypq<>uid://dlax674nyq3d0<>uid://q32xn4pxq7jl<>uid://b2ebpdkete47n<>uid://dxy41lkd2najo<>uid://qhnei8rxvww2<>uid://c7eh37xptsc3f<>uid://cbng3bn0ns7tr<>uid://cublbx0jaggdm<>res://Coin.gd<>uid://vcpu450rlyec
+gun.png::CompressedTexture2D::3412899387070937032::1662516254::1667270450::1::::<><>::
+icon.png::CompressedTexture2D::7823055294038883501::1662516254::1667270450::1::::<><>::
+man2-pistol2.png::CompressedTexture2D::4533926591508748334::1662516254::1667270450::1::::<><>::
+PlayerManager.gd::GDScript::-1::1667270450::0::1::::<>CharacterBody2D<>::
+Coin.gd::GDScript::-1::1667360511::0::1::::<>RigidBody2D<>::
+::res://Assets/::1662516254
+::res://Assets/Gizmos/::1662516254
+::res://Assets/PlayMaker/::1662516254
+::res://Assets/PlayMaker/Editor/::1662516254
+::res://Assets/PlayMaker/Editor/Resources/::1662516254
+::res://Assets/PlayMaker/Editor/Watermarks/::1662516254
+::res://Red/::1667270450
+Dash Stab.png::CompressedTexture2D::5511980636795993101::1662516254::1667270450::1::::<><>::
+Dash.png::CompressedTexture2D::7932792907712266447::1662516254::1667270450::1::::<><>::
+Death.png::CompressedTexture2D::8824958337661031736::1662516254::1667270450::1::::<><>::
+Fall.png::CompressedTexture2D::7027618612983518501::1662516254::1667270450::1::::<><>::
+Hit.png::CompressedTexture2D::2258875667718065236::1662516254::1667270450::1::::<><>::
+Idle.png::CompressedTexture2D::6412043533792606886::1662516254::1667270450::1::::<><>::
+Jump.png::CompressedTexture2D::1138269078537856599::1662516254::1667270450::1::::<><>::
+Long Range Stab.png::CompressedTexture2D::8085280885233750008::1662516254::1667270450::1::::<><>::
+RecoverReady.png::CompressedTexture2D::1182505235702512205::1662516254::1667270450::1::::<><>::
+Run.png::CompressedTexture2D::4289864650062972945::1662516254::1667270450::1::::<><>::
+::res://Red/@Aseprite/::1662516254
+::res://Red/Bow Attack/::1667270450
+Bow Charge.png::CompressedTexture2D::1091320964465579987::1662516254::1667270450::1::::<><>::
+Bow Shot.png::CompressedTexture2D::3499021745344889005::1662516254::1667270450::1::::<><>::
+Ready.png::CompressedTexture2D::9090223324428531124::1662516254::1667270450::1::::<><>::
+Recover.png::CompressedTexture2D::4964282951280737541::1662516254::1667270450::1::::<><>::
+::res://Red/Bow Attack/Projectile/::1667270450
+Arrow.png::CompressedTexture2D::7569293353769644804::1662516254::1667270450::1::::<><>::
+Enhanced Arrow.png::CompressedTexture2D::305057355978228857::1662516254::1667270450::1::::<><>::
+::res://Red/Melee Attack/::1667270450
+Attack 1.png::CompressedTexture2D::7821083834211687363::1662516254::1667270450::1::::<><>::
+Attack 2.png::CompressedTexture2D::7676124019670583247::1662516254::1667270450::1::::<><>::
+Attack 3.png::CompressedTexture2D::3014415739982255790::1662516254::1667270450::1::::<><>::
+Consecutive Attack.png::CompressedTexture2D::7879648446687765181::1662516254::1667270450::1::::<><>::
