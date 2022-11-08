@@ -1,10 +1,23 @@
 extends RigidBody2D
 
+var default_linear = Vector2(200,-500)
+var default_angular = 10.0
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
 
 func _process(delta):
 	pass
 	
+func set_velocity(linearv,angular):
+	if linearv == null :
+		linearv = default_linear
+	if angular == null:
+		angular = default_angular
+		
+	linear_velocity = linearv
+	angular_velocity = angular
+	
+	
+func _on_hitbox_body_entered(body):
+	body.ricochet()

@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://yadpp5060xk"
+path="res://.godot/imported/Arrow Projectile Frame 2.png-eb8bb7cc6e79a7865e3bfac62b29796f.ctex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Red Sprite/Old FIles (Not SUpported Anymore)/@Old Top Down No Aseprite/Bow Animation/Projectile/Arrow Projectile Frame 2.png"
+dest_files=["res://.godot/imported/Arrow Projectile Frame 2.png-eb8bb7cc6e79a7865e3bfac62b29796f.ctex"]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/bptc_ldr=0
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=1

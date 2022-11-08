@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://dk1yyojf7h40f"]
+[gd_scene load_steps=57 format=3 uid="uid://dk1yyojf7h40f"]
 
 [ext_resource type="Script" path="res://PlayerManager.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://bovh7pe18xj57" path="res://gun.png" id="2"]
@@ -10,9 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://qhnei8rxvww2" path="res://Red/Jump.png" id="8"]
 [ext_resource type="Texture2D" uid="uid://c7eh37xptsc3f" path="res://Red/Fall.png" id="9"]
 [ext_resource type="PackedScene" uid="uid://cbng3bn0ns7tr" path="res://Bullet.tscn" id="10_xeyad"]
-[ext_resource type="Texture2D" uid="uid://cublbx0jaggdm" path="res://bullet.png" id="11_rwooi"]
-[ext_resource type="Script" path="res://Coin.gd" id="12_7lrgn"]
-[ext_resource type="Texture2D" uid="uid://vcpu450rlyec" path="res://coin.png" id="12_k1f2j"]
+[ext_resource type="PackedScene" uid="uid://dk78vsl4nqeb2" path="res://Coin.tscn" id="12_aw8c4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 28)
@@ -226,13 +224,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="54"]
 size = Vector2(69, 216)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_d8i70"]
-radius = 4.12311
-
 [node name="Game" type="Node2D"]
 
 [node name="Player" type="CharacterBody2D" parent="."]
 position = Vector2(299, 220)
+collision_layer = 2
 script = ExtResource("1")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
@@ -247,6 +243,9 @@ animation = &"idle"
 playing = true
 centered = false
 offset = Vector2(-8, -24)
+
+[node name="ItemPos" type="Marker2D" parent="Player/Sprite"]
+position = Vector2(1, -11)
 
 [node name="Gun" type="Sprite2D" parent="Player/Sprite"]
 texture_filter = 1
@@ -277,20 +276,4 @@ shape = SubResource("54")
 
 [node name="Bullet" parent="." instance=ExtResource("10_xeyad")]
 
-[node name="Bullet2" type="Sprite2D" parent="."]
-position = Vector2(445, 252)
-texture = ExtResource("11_rwooi")
-
-[node name="Coin" type="RigidBody2D" parent="."]
-position = Vector2(262, 225)
-linear_velocity = Vector2(199, 0)
-script = ExtResource("12_7lrgn")
-metadata/_edit_group_ = true
-
-[node name="Sprite" type="Sprite2D" parent="Coin"]
-texture_filter = 1
-texture = ExtResource("12_k1f2j")
-
-[node name="Collision" type="CollisionShape2D" parent="Coin"]
-rotation = 1.5708
-shape = SubResource("CircleShape2D_d8i70")
+[node name="Coin" parent="." instance=ExtResource("12_aw8c4")]

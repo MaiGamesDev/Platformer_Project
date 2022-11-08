@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 var Bullet = preload("res://Bullet.tscn")
+var Coin = preload("res://Coin.tscn")
 
 const SPEED = 100
 const JUMP_VELOCITY = -300.0
@@ -31,13 +32,21 @@ func _physics_process(delta):
 	
 
 func _input(event):
-	if event is InputEventMouseButton:
-		if event.pressed:
-			shoot()
+	if event.is_action_pressed("shoot"):
+		shoot()
+	if event.is_action_pressed("use_item"):
+		use_coin()
 
 
 func shoot():
-	print("b")
 	var bullet = Bullet.instantiate()
 	bullet.global_position = $Sprite/Gun/ShootPos.global_position
+	bullet.set_velocity(null)
 	get_tree().root.add_child(bullet)
+
+func use_coin():
+	var coin = Coin.instantiate()
+	coin.global_position = $Sprite/ItemPos.global_position
+	coin.set_velocity(null,null)
+	get_tree().root.add_child(coin)
+	
