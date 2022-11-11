@@ -1,10 +1,11 @@
 0b7126e0c6e86d3ec295a72f5aa6e0bd
-::res://::1668130103
+::res://::1668151781
 default_env.tres::Environment::-1::1667954710::0::1::::<><>::
-::res://ART/::1667961690
+::res://ART/::1668152023
 bullet.png::CompressedTexture2D::6179353537681570970::1667961687::1667961690::1::::<><>::
 coin.png::CompressedTexture2D::1479042513356744690::1667954710::1667955302::1::::<><>::
 coin_sheet.png::CompressedTexture2D::7222975539696945939::1667954710::1667955324::1::::<><>::
+enemy.png::CompressedTexture2D::1713018497455072933::1668152023::1668152026::1::::<><>::
 gun.png::CompressedTexture2D::3412899387070937032::1667954710::1667955309::1::::<><>::
 revolver.png::CompressedTexture2D::2076153146394724646::1667960482::1667960484::1::::<><>::
 ::res://Red Sprite/::1667954709
@@ -313,10 +314,11 @@ Longe Rage Motion Blur.png::CompressedTexture2D::960469790239449552::1667954710:
 Wide Area Attack Motion Blur.png::CompressedTexture2D::3210872422951942505::1667954710::1667954710::1::::<><>::
 Wide Area Attack Sample.png::CompressedTexture2D::1403691789733787056::1667954710::1667954710::1::::<><>::
 Wide Area Attack.png::CompressedTexture2D::3477756455449408577::1667954710::1667954710::1::::<><>::
-::res://SCENE/::1667961747
-Bullet.gd::GDScript::-1::1667961430::0::1::::<>RigidBody2D<>::
-Bullet.tscn::PackedScene::8074948816763412090::1667961747::0::1::::<><>::res://SCENE/Bullet.gd<>uid://cublbx0jaggdm
+::res://SCENE/::1668151575
+Bullet.gd::GDScript::-1::1668151575::0::1::::<>RigidBody2D<>::
+Bullet.tscn::PackedScene::8074948816763412090::1668151575::0::1::::<><>::res://SCENE/Bullet.gd<>uid://cublbx0jaggdm
 Coin.gd::GDScript::-1::1667961747::0::1::::<>RigidBody2D<>::
-Coin.tscn::PackedScene::6778109770584282733::1667961747::0::1::::<><>::res://SCENE/Coin.gd<>uid://vcpu450rlyec
-Game.tscn::PackedScene::2610916298961014275::1667961747::0::1::::<><>::res://SCENE/PlayerManager.gd<>uid://c8tk3u64qrikm<>uid://c0yiptabl147h<>uid://cx8uyelnqct8f<>uid://bdsjs5fuu1daq<>uid://btsv6p5x0mtyt<>uid://d1xafew76s4vh<>uid://bkfjekbeyetqx<>uid://4tx66qd7epsg<>uid://dnbthyxy0yu55
+Coin.tscn::PackedScene::6778109770584282733::1668151575::0::1::::<><>::res://SCENE/Coin.gd<>uid://vcpu450rlyec
+Game.gd::GDScript::-1::1668150871::0::1::::<>Node2D<>::
+Game.tscn::PackedScene::2610916298961014275::1668151575::0::1::::<><>::res://SCENE/PlayerManager.gd<>res://SCENE/Game.gd<>uid://c8tk3u64qrikm<>uid://c0yiptabl147h<>uid://cx8uyelnqct8f<>uid://bdsjs5fuu1daq<>uid://btsv6p5x0mtyt<>uid://d1xafew76s4vh<>uid://bkfjekbeyetqx<>uid://4tx66qd7epsg<>uid://dnbthyxy0yu55
 PlayerManager.gd::GDScript::-1::1667955362::0::1::::<>CharacterBody2D<>::
