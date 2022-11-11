@@ -1,9 +1,5 @@
-res://Bullet.tscn
-res://Coin.tscn
-res://Game.tscn
 res://SCENE/Bullet.tscn
+res://SCENE/Bullet.gd
 res://SCENE/Coin.tscn
 res://SCENE/Game.tscn
-res://SCENE/PlayerManager.gd
-res://SCENE/Bullet.gd
-res://SCENE/Coin.gd
+res://SCENE/Game.gd
