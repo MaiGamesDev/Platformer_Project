@@ -1,4 +1,4 @@
-[gd_scene load_steps=136 format=3 uid="uid://bdg0n67ax5svr"]
+[gd_scene load_steps=137 format=3 uid="uid://bdg0n67ax5svr"]
 
 [ext_resource type="Script" path="res://SCENE/PlayerManager.gd" id="1_7w8jj"]
 [ext_resource type="Script" path="res://SCENE/Game.gd" id="1_cf1w4"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bkfjekbeyetqx" path="res://Red Sprite/New/Platformer/Platformer Sword Attack.png" id="8_yytk7"]
 [ext_resource type="Texture2D" uid="uid://4tx66qd7epsg" path="res://ART/revolver.png" id="9_ihku3"]
 [ext_resource type="PackedScene" uid="uid://dnbthyxy0yu55" path="res://SCENE/Bullet.tscn" id="10_o65mu"]
+[ext_resource type="Texture2D" uid="uid://yn2fuayf4vxl" path="res://ART/enemy.png" id="12_b64q1"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(10, 20)
@@ -666,3 +667,8 @@ position = Vector2(24, -8)
 shape = SubResource("54")
 
 [node name="Bullet" parent="." instance=ExtResource("10_o65mu")]
+
+[node name="Enemy" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(352, 208)
+texture = ExtResource("12_b64q1")
