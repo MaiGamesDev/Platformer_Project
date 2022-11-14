@@ -1,6 +1,3 @@
 res://SCENE/Game.tscn
-res://SCENE/Bullet.gd
-res://SCENE/Game.gd
-res://SCENE/Global.gd
 res://SCENE/Bullet.tscn
 res://SCENE/Coin.tscn
