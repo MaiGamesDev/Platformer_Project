@@ -4,13 +4,14 @@
 [ext_resource type="Texture2D" uid="uid://vcpu450rlyec" path="res://ART/coin.png" id="2_vjj8t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_d8i70"]
-radius = 4.12311
+radius = 3.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pdywv"]
-radius = 8.0
+radius = 4.0
 
 [node name="Coin" type="RigidBody2D"]
 collision_layer = 0
+gravity_scale = 0.5
 linear_velocity = Vector2(200, -400)
 angular_velocity = 10.0
 script = ExtResource("1_rrmn8")
@@ -21,7 +22,6 @@ texture_filter = 1
 texture = ExtResource("2_vjj8t")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-rotation = 1.5708
 shape = SubResource("CircleShape2D_d8i70")
 
 [node name="Hitbox" type="Area2D" parent="."]

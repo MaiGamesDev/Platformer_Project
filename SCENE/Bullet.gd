@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var default_velocity = 350.0
+var default_velocity = 250.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

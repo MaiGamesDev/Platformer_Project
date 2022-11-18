@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-var default_linear = Vector2(150,-300)
+var default_linear = Vector2(120,-210)
 var default_angular = 10.0
 
 func _ready():

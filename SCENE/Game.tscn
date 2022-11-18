@@ -621,11 +621,12 @@ size = Vector2(340, 60)
 script = ExtResource("1_cf1w4")
 
 [node name="Background" type="Sprite2D" parent="."]
+texture_filter = 1
 texture = ExtResource("2_ymrr1")
 centered = false
 
 [node name="Player" type="CharacterBody2D" parent="."]
-position = Vector2(299, 220)
+position = Vector2(248, 248)
 collision_layer = 2
 script = ExtResource("1_7w8jj")
 
@@ -654,11 +655,19 @@ offset = Vector2(10, 0)
 position = Vector2(17, -2)
 
 [node name="Camera2d" type="Camera2D" parent="Player"]
-position = Vector2(0, -41)
+position = Vector2(0, -56)
 current = true
+zoom = Vector2(4, 4)
+limit_left = 0
+limit_top = 0
+drag_horizontal_enabled = true
+drag_left_margin = 0.1
+drag_right_margin = 0.1
+editor_draw_limits = true
+editor_draw_drag_margin = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-48, 336)
+position = Vector2(-48, 392)
 
 [node name="CollisionShape2d" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2(219, -112)
