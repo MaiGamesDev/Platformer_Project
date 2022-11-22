@@ -1,43 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://dnbthyxy0yu55"]
+[gd_scene load_steps=4 format=3 uid="uid://dnbthyxy0yu55"]
 
 [ext_resource type="Script" path="res://SCENE/Bullet.gd" id="1_8iwui"]
 [ext_resource type="Texture2D" uid="uid://cublbx0jaggdm" path="res://ART/bullet.png" id="2_d2oax"]
-[ext_resource type="Texture2D" uid="uid://b6auc7fu6urq4" path="res://ART/effect_sheet.png" id="3_1r3is"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nn50s"]
 size = Vector2(3, 2.375)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ee02k"]
-atlas = ExtResource("3_1r3is")
-region = Rect2(0, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wybi4"]
-atlas = ExtResource("3_1r3is")
-region = Rect2(16, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_0k4cp"]
-atlas = ExtResource("3_1r3is")
-region = Rect2(32, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgm4p"]
-atlas = ExtResource("3_1r3is")
-region = Rect2(48, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ewvlk"]
-atlas = ExtResource("3_1r3is")
-region = Rect2(64, 0, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ccl61"]
-atlas = ExtResource("3_1r3is")
-region = Rect2(80, 0, 16, 16)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_vayui"]
-animations = [{
-"frames": [SubResource("AtlasTexture_ee02k"), SubResource("AtlasTexture_wybi4"), SubResource("AtlasTexture_0k4cp"), SubResource("AtlasTexture_vgm4p"), SubResource("AtlasTexture_ewvlk"), SubResource("AtlasTexture_ccl61")],
-"loop": true,
-"name": &"default",
-"speed": 12.0
-}]
 
 [node name="Bullet" type="RigidBody2D"]
 collision_layer = 8
@@ -53,8 +20,3 @@ texture = ExtResource("2_d2oax")
 [node name="CollisionShape2d" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 0)
 shape = SubResource("RectangleShape2D_nn50s")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-texture_filter = 1
-frames = SubResource("SpriteFrames_vayui")
-playing = true

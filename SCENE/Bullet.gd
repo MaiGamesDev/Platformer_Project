@@ -1,10 +1,17 @@
 extends RigidBody2D
 
+
+
 var default_velocity = 250.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass
+	var effect = AnimatedSprite2D.new()
+	effect.frames = load("res://BulletEffect.tres")
+	effect.global_position = global_position
+	effect.playing = true
+	effect.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	get_tree().root.add_child(effect)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

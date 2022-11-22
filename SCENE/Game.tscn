@@ -705,3 +705,20 @@ texture = ExtResource("12_b64q1")
 texture_filter = 1
 position = Vector2(279, 238)
 texture = ExtResource("14_sp7sp")
+
+[node name="ColorRect" type="ColorRect" parent="Npc"]
+offset_left = -31.0
+offset_top = -62.0
+offset_right = 33.0
+offset_bottom = -22.0
+color = Color(0.709804, 0.576471, 0.388235, 1)
+
+[node name="Label" type="Label" parent="Npc/ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "helloo
+"
+horizontal_alignment = 1
