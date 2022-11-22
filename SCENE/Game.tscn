@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=3 uid="uid://bdg0n67ax5svr"]
+[gd_scene load_steps=139 format=3 uid="uid://bdg0n67ax5svr"]
 
 [ext_resource type="Script" path="res://SCENE/PlayerManager.gd" id="1_7w8jj"]
 [ext_resource type="Script" path="res://SCENE/Game.gd" id="1_cf1w4"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://4tx66qd7epsg" path="res://ART/revolver.png" id="9_ihku3"]
 [ext_resource type="PackedScene" uid="uid://dnbthyxy0yu55" path="res://SCENE/Bullet.tscn" id="10_o65mu"]
 [ext_resource type="Texture2D" uid="uid://yn2fuayf4vxl" path="res://ART/enemy.png" id="12_b64q1"]
+[ext_resource type="Texture2D" uid="uid://can2xt0blgi3f" path="res://ART/npc.png" id="14_sp7sp"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(10, 20)
@@ -699,3 +700,8 @@ shape = SubResource("RectangleShape2D_m6tpf")
 texture_filter = 1
 position = Vector2(352, 208)
 texture = ExtResource("12_b64q1")
+
+[node name="Npc" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(279, 238)
+texture = ExtResource("14_sp7sp")
