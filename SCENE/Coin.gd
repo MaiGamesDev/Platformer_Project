@@ -9,13 +9,13 @@ func _ready():
 func _process(delta):
 	pass
 	
-func set_velocity(linearv,angular):
+func set_velocity(linearv,angular,dir):
 	if linearv == null :
 		linearv = default_linear
 	if angular == null:
 		angular = default_angular
 		
-	linear_velocity = linearv
+	linear_velocity = linearv * Vector2(dir, 1)
 	angular_velocity = angular
 	
 	

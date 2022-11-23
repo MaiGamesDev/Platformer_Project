@@ -1,4 +1,4 @@
-[gd_scene load_steps=139 format=3 uid="uid://bdg0n67ax5svr"]
+[gd_scene load_steps=142 format=3 uid="uid://bdg0n67ax5svr"]
 
 [ext_resource type="Script" path="res://SCENE/PlayerManager.gd" id="1_7w8jj"]
 [ext_resource type="Script" path="res://SCENE/Game.gd" id="1_cf1w4"]
@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://4tx66qd7epsg" path="res://ART/revolver.png" id="9_ihku3"]
 [ext_resource type="PackedScene" uid="uid://dnbthyxy0yu55" path="res://SCENE/Bullet.tscn" id="10_o65mu"]
 [ext_resource type="Texture2D" uid="uid://yn2fuayf4vxl" path="res://ART/enemy.png" id="12_b64q1"]
-[ext_resource type="Texture2D" uid="uid://can2xt0blgi3f" path="res://ART/npc.png" id="14_sp7sp"]
+[ext_resource type="Texture2D" uid="uid://ciugmnln1bv5u" path="res://ART/npc_sheet.png" id="14_0x3g4"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(10, 20)
@@ -618,6 +618,22 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6tpf"]
 size = Vector2(340, 60)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3764b"]
+atlas = ExtResource("14_0x3g4")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nvqbc"]
+atlas = ExtResource("14_0x3g4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fw6l5"]
+animations = [{
+"frames": [SubResource("AtlasTexture_3764b"), SubResource("AtlasTexture_3764b"), SubResource("AtlasTexture_3764b"), SubResource("AtlasTexture_3764b"), SubResource("AtlasTexture_3764b"), SubResource("AtlasTexture_3764b"), SubResource("AtlasTexture_3764b"), SubResource("AtlasTexture_nvqbc")],
+"loop": true,
+"name": &"idle",
+"speed": 2.0
+}]
+
 [node name="Game" type="Node2D"]
 script = ExtResource("1_cf1w4")
 
@@ -662,8 +678,11 @@ zoom = Vector2(4, 4)
 limit_left = 0
 limit_top = 0
 drag_horizontal_enabled = true
+drag_vertical_enabled = true
 drag_left_margin = 0.1
+drag_top_margin = 0.5
 drag_right_margin = 0.1
+drag_bottom_margin = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
 
@@ -698,22 +717,28 @@ shape = SubResource("RectangleShape2D_m6tpf")
 
 [node name="Enemy" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(352, 208)
+position = Vector2(224, 238)
 texture = ExtResource("12_b64q1")
 
-[node name="Npc" type="Sprite2D" parent="."]
+[node name="Npc" type="RigidBody2D" parent="."]
+position = Vector2(280, 248)
+
+[node name="Sprite" type="AnimatedSprite2D" parent="Npc"]
 texture_filter = 1
-position = Vector2(279, 238)
-texture = ExtResource("14_sp7sp")
+frames = SubResource("SpriteFrames_fw6l5")
+animation = &"idle"
+playing = true
+offset = Vector2(0, -10)
 
 [node name="ColorRect" type="ColorRect" parent="Npc"]
 offset_left = -31.0
-offset_top = -62.0
+offset_top = -71.0
 offset_right = 33.0
-offset_bottom = -22.0
+offset_bottom = -31.0
 color = Color(0.709804, 0.576471, 0.388235, 1)
 
 [node name="Label" type="Label" parent="Npc/ColorRect"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
