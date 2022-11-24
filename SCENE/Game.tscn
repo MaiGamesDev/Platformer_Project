@@ -722,6 +722,7 @@ texture = ExtResource("12_b64q1")
 
 [node name="Npc" type="RigidBody2D" parent="."]
 position = Vector2(280, 248)
+gravity_scale = 0.0
 
 [node name="Sprite" type="AnimatedSprite2D" parent="Npc"]
 texture_filter = 1

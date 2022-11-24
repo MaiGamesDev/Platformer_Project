@@ -4,7 +4,7 @@ var Bullet = preload("res://SCENE/Bullet.tscn")
 var Coin = preload("res://SCENE/Coin.tscn")
 
 const SPEED = 4
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -200.0
 const MAX_SPEED = 80
 const DECEL_SPEED = 6
 
