@@ -1,4 +1,4 @@
-[gd_scene load_steps=142 format=3 uid="uid://bdg0n67ax5svr"]
+[gd_scene load_steps=151 format=3 uid="uid://bdg0n67ax5svr"]
 
 [ext_resource type="Script" path="res://SCENE/PlayerManager.gd" id="1_7w8jj"]
 [ext_resource type="Script" path="res://SCENE/Game.gd" id="1_cf1w4"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dnbthyxy0yu55" path="res://SCENE/Bullet.tscn" id="10_o65mu"]
 [ext_resource type="Texture2D" uid="uid://yn2fuayf4vxl" path="res://ART/enemy.png" id="12_b64q1"]
 [ext_resource type="Texture2D" uid="uid://ciugmnln1bv5u" path="res://ART/npc_sheet.png" id="14_0x3g4"]
+[ext_resource type="Texture2D" uid="uid://can2xt0blgi3f" path="res://ART/npc.png" id="15_ghhds"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(10, 20)
@@ -615,6 +616,72 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qovbi"]
+animation = &"walk"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4d02v"]
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gnpdv"]
+states/Start/position = Vector2(191, 100)
+states/walk/node = SubResource("AnimationNodeAnimation_qovbi")
+states/walk/position = Vector2(310, 20)
+transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_4d02v")]
+graph_offset = Vector2(30, -17)
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_l7hdb"]
+
+[sub_resource type="Animation" id="Animation_s305b"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="Animation" id="Animation_mn2m6"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
+}
+
+[sub_resource type="Animation" id="Animation_2geju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t0iom"]
+_data = {
+"RESET": SubResource("Animation_2geju"),
+"idle": SubResource("Animation_s305b"),
+"walk": SubResource("Animation_mn2m6")
+}
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m6tpf"]
 size = Vector2(340, 60)
 
@@ -655,7 +722,7 @@ shape = SubResource("1")
 texture_filter = 1
 position = Vector2(0, 24)
 frames = SubResource("8")
-animation = &"walk"
+animation = &"idle"
 playing = true
 offset = Vector2(-1, -34)
 
@@ -685,6 +752,17 @@ drag_right_margin = 0.1
 drag_bottom_margin = 0.0
 editor_draw_limits = true
 editor_draw_drag_margin = true
+
+[node name="SpriteTree" type="AnimationTree" parent="Player"]
+tree_root = SubResource("AnimationNodeStateMachine_gnpdv")
+anim_player = NodePath("Animation")
+active = true
+parameters/playback = SubResource("AnimationNodeStateMachinePlayback_l7hdb")
+
+[node name="Animation" type="AnimationPlayer" parent="Player/SpriteTree"]
+libraries = {
+"": SubResource("AnimationLibrary_t0iom")
+}
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2(-48, 392)
@@ -748,3 +826,8 @@ grow_vertical = 2
 text = "helloo
 "
 horizontal_alignment = 1
+
+[node name="Npc2" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(288, 235)
+texture = ExtResource("15_ghhds")
