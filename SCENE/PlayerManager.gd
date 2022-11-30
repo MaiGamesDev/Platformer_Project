@@ -8,6 +8,9 @@ const JUMP_VELOCITY = -200.0
 const MAX_SPEED = 80
 const DECEL_SPEED = 6
 
+var animationTree = $AnimationTree
+var animationState = animationTree.get("parameters/playback")
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var gun_collision_point = Vector2(0,0)
@@ -58,3 +61,18 @@ func use_coin():
 	coin.set_velocity(null,null,dir)
 	get_tree().root.add_child(coin)
 	
+func animationManager():
+	# velocity animation
+	if velocity.x == 0:
+		if velocity.y < 0:
+			#fall
+			pass
+		elif velocity.y > 0:
+			#jump
+			pass
+		else:
+			#idle
+			pass
+	else:
+		#walk
+		pass

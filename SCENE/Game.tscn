@@ -1,4 +1,4 @@
-[gd_scene load_steps=151 format=3 uid="uid://bdg0n67ax5svr"]
+[gd_scene load_steps=158 format=3 uid="uid://bdg0n67ax5svr"]
 
 [ext_resource type="Script" path="res://SCENE/PlayerManager.gd" id="1_7w8jj"]
 [ext_resource type="Script" path="res://SCENE/Game.gd" id="1_cf1w4"]
@@ -616,19 +616,54 @@ animations = [{
 "speed": 10.0
 }]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_i7xkr"]
+animation = &"fall"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lermv"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_33kyt"]
+animation = &"jump"
+
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qovbi"]
 animation = &"walk"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4d02v"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_akkeo"]
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_n5on2"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sjh5s"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_gnpdv"]
-states/Start/position = Vector2(191, 100)
+states/Start/position = Vector2(196, 100)
+states/fall/node = SubResource("AnimationNodeAnimation_i7xkr")
+states/fall/position = Vector2(548, 72)
+states/idle/node = SubResource("AnimationNodeAnimation_lermv")
+states/idle/position = Vector2(333, 49)
+states/jump/node = SubResource("AnimationNodeAnimation_33kyt")
+states/jump/position = Vector2(456, -2)
 states/walk/node = SubResource("AnimationNodeAnimation_qovbi")
-states/walk/position = Vector2(310, 20)
-transitions = ["Start", "walk", SubResource("AnimationNodeStateMachineTransition_4d02v")]
-graph_offset = Vector2(30, -17)
+states/walk/position = Vector2(447, 157)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_akkeo"), "idle", "walk", SubResource("AnimationNodeStateMachineTransition_n5on2"), "walk", "idle", SubResource("AnimationNodeStateMachineTransition_sjh5s")]
+graph_offset = Vector2(-125, -37)
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id="AnimationNodeStateMachinePlayback_l7hdb"]
+
+[sub_resource type="Animation" id="Animation_2geju"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
 
 [sub_resource type="Animation" id="Animation_s305b"]
 resource_name = "idle"
@@ -660,8 +695,8 @@ tracks/0/keys = {
 "values": [&"walk"]
 }
 
-[sub_resource type="Animation" id="Animation_2geju"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_usrbh"]
+resource_name = "fall"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -672,13 +707,30 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [&"idle"]
+"values": [&"fall"]
+}
+
+[sub_resource type="Animation" id="Animation_xicq1"]
+resource_name = "jump"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"jump"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0iom"]
 _data = {
 "RESET": SubResource("Animation_2geju"),
+"fall": SubResource("Animation_usrbh"),
 "idle": SubResource("Animation_s305b"),
+"jump": SubResource("Animation_xicq1"),
 "walk": SubResource("Animation_mn2m6")
 }
 
