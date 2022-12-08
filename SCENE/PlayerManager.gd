@@ -5,18 +5,33 @@ var Coin = preload("res://SCENE/Coin.tscn")
 
 const SPEED = 4
 const JUMP_VELOCITY = -200.0
-const MAX_SPEED = 80
+const MAX_SPEED = 100
 const DECEL_SPEED = 6
 
-var animationTree = $AnimationTree
-var animationState = animationTree.get("parameters/playback")
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 var gun_collision_point = Vector2(0,0)
 
+var STATE = "idle"
+var stateOld = STATE
+
+
 func _physics_process(delta):
-	move(delta)
+	if STATE != "dash":
+		move(delta)
+	
+func _process(delta):
+	
+	stateOld = STATE
+	
+	manage_STATE()
+	
+	#AFTER
+	if STATE != stateOld:
+		print(STATE)
+		set_animation()	
+	
 	
 func move(delta):
 	# Add the gravity.
@@ -39,13 +54,19 @@ func move(delta):
 		
 	move_and_slide()
 	
-
+func dash():
+	STATE = "dash"
+	var dir = sign($Sprite.scale.x) 
+	velocity.x = MAX_SPEED * 2 * dir
+	move_and_slide()
+	
 func _input(event):
 	if event.is_action_pressed("shoot"):
 		shoot()
 	if event.is_action_pressed("use_item"):
 		use_coin()
-
+	if event.is_action_pressed("dash"):
+		dash()
 
 func shoot():
 	var dir = sign($Sprite.scale.x)
@@ -61,18 +82,22 @@ func use_coin():
 	coin.set_velocity(null,null,dir)
 	get_tree().root.add_child(coin)
 	
-func animationManager():
+func manage_STATE():
 	# velocity animation
-	if velocity.x == 0:
-		if velocity.y < 0:
+	if not is_on_floor():
+		if velocity.y > 0:
 			#fall
-			pass
-		elif velocity.y > 0:
+			STATE = "fall"
+		elif velocity.y < 0:
 			#jump
-			pass
-		else:
-			#idle
-			pass
+			STATE = "jump"
 	else:
-		#walk
-		pass
+		if velocity.x == 0:
+			#idle
+			STATE = "idle"
+		else:
+			#walk
+			STATE = "walk"
+		
+func set_animation():
+	$Sprite.animation = STATE

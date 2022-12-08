@@ -665,36 +665,6 @@ tracks/0/keys = {
 "values": [&"idle"]
 }
 
-[sub_resource type="Animation" id="Animation_s305b"]
-resource_name = "idle"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"idle"]
-}
-
-[sub_resource type="Animation" id="Animation_mn2m6"]
-resource_name = "walk"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"walk"]
-}
-
 [sub_resource type="Animation" id="Animation_usrbh"]
 resource_name = "fall"
 tracks/0/type = "value"
@@ -710,6 +680,21 @@ tracks/0/keys = {
 "values": [&"fall"]
 }
 
+[sub_resource type="Animation" id="Animation_s305b"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"idle"]
+}
+
 [sub_resource type="Animation" id="Animation_xicq1"]
 resource_name = "jump"
 tracks/0/type = "value"
@@ -723,6 +708,21 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"jump"]
+}
+
+[sub_resource type="Animation" id="Animation_mn2m6"]
+resource_name = "walk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"walk"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t0iom"]
@@ -808,7 +808,6 @@ editor_draw_drag_margin = true
 [node name="SpriteTree" type="AnimationTree" parent="Player"]
 tree_root = SubResource("AnimationNodeStateMachine_gnpdv")
 anim_player = NodePath("Animation")
-active = true
 parameters/playback = SubResource("AnimationNodeStateMachinePlayback_l7hdb")
 
 [node name="Animation" type="AnimationPlayer" parent="Player/SpriteTree"]
