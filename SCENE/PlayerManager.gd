@@ -20,16 +20,23 @@ var stateOld = STATE
 var dir = 1
 
 
+func _input(event):
+	if event.is_action_pressed("shoot"):
+		shoot()
+	if event.is_action_pressed("use_item"):
+		use_coin()
+	if event.is_action_pressed("dash"):
+		dash()
+
 func _physics_process(delta):
-	if STATE != "dash":
-		move(delta)
+	move(delta)
 	
 func _process(delta):
 	initialize_variable()
 	
 	manage_STATE()
 	
-	#AFTER
+	# AFTER
 	if STATE != stateOld:
 		print(STATE)
 		set_animation()	
@@ -40,18 +47,18 @@ func initialize_variable():
 	
 func move(delta):
 	# Add the gravity.
-	if not is_on_floor() and not is_on_wall():
+	if not is_on_floor() and not is_on_wall() and is_gravitable():
 		velocity.y += gravity * delta
-	if not is_on_floor() and is_on_wall():
+	if not is_on_floor() and is_on_wall() and is_gravitable():
 		velocity.y += gravity * delta
 		
 	# Set max y velocity.
 	velocity.y = clamp(velocity.y, -10000 , MAX_FALL_SPEED)
-
+	
 	# Handle Jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and is_controllable():
 		velocity.y = JUMP_VELOCITY
-	if Input.is_action_just_pressed("ui_accept") and is_on_wall():
+	if Input.is_action_just_pressed("ui_accept") and is_on_wall() and is_controllable():
 		velocity.y = JUMP_VELOCITY
 		velocity.x = -dir * WALL_JUMP_SPEED
 		
@@ -59,7 +66,10 @@ func move(delta):
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var direction = Input.get_axis("move_left", "move_right")
+	var direction = 0
+	if is_controllable():
+		direction = Input.get_axis("move_left", "move_right")
+		
 	if direction:
 		var decel = (int((sign(velocity.x) != sign(direction))) * DECEL_SPEED * direction) 
 		var velocity_fm = velocity.x + direction * SPEED + decel
@@ -72,16 +82,11 @@ func move(delta):
 	
 func dash():
 	STATE = "dash"
-	velocity.x = MAX_SPEED * 2 * dir
-	move_and_slide()
+	set_animation()
 	
-func _input(event):
-	if event.is_action_pressed("shoot"):
-		shoot()
-	if event.is_action_pressed("use_item"):
-		use_coin()
-	if event.is_action_pressed("dash"):
-		dash()
+	velocity.x = MAX_SPEED * 2 * dir
+	velocity.y = 0
+	
 
 func shoot():
 	var bullet = Bullet.instantiate()
@@ -96,26 +101,49 @@ func use_coin():
 	get_tree().root.add_child(coin)
 	
 func manage_STATE():
-	# velocity animation
-	if not is_on_floor():
+	
+	# Gravity STATE
+	if not is_on_floor() and is_gravitable():
 		if velocity.y > 0:
-			#fall
+			# fall
 			STATE = "fall"
 		elif velocity.y < 0:
-			#jump
+			# jump
 			STATE = "jump"
-	else:
+			
+	# Velocity STATE
+	if is_on_floor() and is_controllable():
 		if velocity.x == 0:
-			#idle
+			# idle
 			STATE = "idle"
 		else:
-			#walk
+			# walk
 			STATE = "walk"
 	
+	# wall STATE
 	if not is_on_floor() and is_on_wall():
-		#wall_grab
+		# wall_grab
 		STATE = "wall_grab"
+		
+	
+	if not is_controllable():
+		if STATE == "dash" and abs(velocity.x) < 30:
+			STATE = "" 
 		
 func set_animation():
 	$Sprite.animation = STATE
+	
+func is_controllable():
+	var uncontrollable_state = ["dash"]
+	for i in uncontrollable_state.size():
+		if STATE == uncontrollable_state[i]:
+			return false
+	return true
+	
+func is_gravitable():
+	var ungravitable_state = ["dash"]
+	for i in ungravitable_state.size():
+		if STATE == ungravitable_state[i]:
+			return false
+	return true
 	
