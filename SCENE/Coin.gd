@@ -6,7 +6,7 @@ var default_angular = 10.0
 func _ready():
 	pass
 
-func _process(delta):
+func _process(_delta):
 	pass
 	
 func set_velocity(linearv,angular,dir):

@@ -31,7 +31,7 @@ func _input(event):
 func _physics_process(delta):
 	move(delta)
 	
-func _process(delta):
+func _process(_delta):
 	initialize_variable()
 	
 	manage_STATE()
@@ -131,7 +131,8 @@ func manage_STATE():
 			STATE = "" 
 		
 func set_animation():
-	$Sprite.animation = STATE
+	if $Sprite.set_animation(STATE) != null:
+		$Sprite.animation = STATE
 	
 func is_controllable():
 	var uncontrollable_state = ["dash"]
